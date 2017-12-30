@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/html/StudentCreated.html</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/view/UIStudentView.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/html/student_update_by_id_form.html</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/view/StudentsView.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/dataaccess/CourseDAOImpl.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/html/student_new_form.html</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/dataaccess/RegistryDAO.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/web/index.html</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/dataaccess/StudentDAO.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/transferobjects/Registry.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/business/ValidationException.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/html/tuition_update_id_form.html</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/business/TuitionLogic.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/transferobjects/Course.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/dataaccess/TuitionDAO.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/view/TuitionView.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/dataaccess/DataSource.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/web/WEB-INF/web.xml</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/dataaccess/CourseDAO.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/transferobjects/Student.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/html/student_delete_by_id_form.html</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/test/StudentDAOTest.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/business/StudentsLogic.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/dataaccess/TuitionDAOImpl.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/view/StudentView.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/business/CoursesLogic.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/dataaccess/StudentDAOImpl.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/view/UITuitionView.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/transferobjects/Tuition.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/business/ValidationException_1.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/view/CoursesView.java</file>
+            <file>file:/Users/fatema/NetBeansProjects/Registrar/src/java/html/student_search_by_id_form.html</file>
+        </group>
+    </open-files>
+</project-private>
