@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+
+</head>
+<body>
+<form action="/Registrar/registryview" name="StudentRegistration" method="post">
+
+<table cellpadding="2" width="20%" bgcolor="99FFFF" align="center"
+cellspacing="2">
+
+<tr>
+<td colspan=2>
+<center><font size=4><b>Student Registration Form</b></font></center>
+</td>
+</tr>
+
+<tr>
+<td>Student Number </td>
+<td><select name="studentNumber">
+<option value="-1" selected>select..</option>
+"__STUDENT_TEMPLATE__"
+</select></td>
+</tr>
+
+
+
+<tr>
+<td>Course </td>
+<td><select name="Course">
+<option value="-1" selected>select..</option>
+"__COURSE_TEMPLATE__"
+</select></td>
+</tr>
+
+
+<tr>
+<td>Term </td>
+<td><select name="term">
+<option value="-1" selected>select..</option>
+<option value="W">W</option>
+<option value="F">F</option>
+<option value="S">S</option>
+</select></td>
+
+
+<tr>
+<td>Year</td>
+<td><input type="month" name="year" id="year" ></td>
+
+</tr>
+
+<tr>
+<td><input type="reset"></td>
+<td colspan="2"><input type="submit" value="Submit Form" /></td>
+</tr>
+
+</table>
+</form>
+</body>
+</html>

@@ -5,8 +5,12 @@
  */
 package business;
 
+import dataaccess.RegistryDAO;
+import dataaccess.RegistryDAOImpl;
 import dataaccess.StudentDAO;
 import dataaccess.StudentDAOImpl;
+import dataaccess.TuitionDAO;
+import dataaccess.TuitionDAOImpl;
 import java.util.List;
 import javax.xml.bind.ValidationException;
 import transferobjects.Student;
@@ -58,6 +62,12 @@ public class StudentsLogic {
     }
     
     public void deleteStudentById(int studentNumber){
+        TuitionLogic tuitionLogic = new TuitionLogic();
+        tuitionLogic.deleteStudentTuition(studentNumber);
+        
+        RegistryLogic registryLogic = new RegistryLogic();
+        registryLogic.deletStudent(studentNumber);
+  
         studentDAO.deleteStudent(studentNumber);
     }
     

@@ -32,7 +32,7 @@ public class TuitionView extends HttpServlet{
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void showAllTuitions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -64,7 +64,7 @@ public class TuitionView extends HttpServlet{
          response.setContentType("text/html;charset=UTF-8");
          try (PrintWriter out = response.getWriter()) {
              int studentNumber = Integer.parseInt(request.getParameter("studentNumber"));
-             double paid = Double.parseDouble(request.getParameter("paid"));
+             double paid = Double.parseDouble(request.getParameter("tuition"));
              TuitionLogic logic = new TuitionLogic();
              logic.updateTuitionLogic(studentNumber,paid);
             
@@ -72,11 +72,13 @@ public class TuitionView extends HttpServlet{
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Student information serach by id</title>");            
+            out.println("<title>Updated tuition information serach by id</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Students View at " + request.getContextPath() + "</h1>");
-            out.print("<h3> student information is updated </h3>");
+            out.println("<h1>Tuitions View at " + request.getContextPath() + "</h1>");
+            out.print("<h3> Tuition information is updated </h3>");
+            out.println("</body>");
+            out.println("</html>");
             out.println("</body>");
             out.println("</html>");
         }catch(Exception e){
@@ -96,7 +98,7 @@ public class TuitionView extends HttpServlet{
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
+        showAllTuitions(request, response);
         
     }
 
@@ -109,20 +111,8 @@ public class TuitionView extends HttpServlet{
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //processRequest(request, response);
-        String pathInfo = request.getPathInfo();
-        
-        
-        if(pathInfo.equals("/update") ){
-                updateTuitionById(request, response);
-        }
-         else{
-             response.setContentType("text/html;charset=UTF-8");
-         try (PrintWriter out = response.getWriter()){
-             out.print("<h3> invalid url ... </h3");
-         }
-        }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {    
+        updateTuitionById(request, response);    
     }
 
     /**

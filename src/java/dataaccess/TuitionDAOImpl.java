@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import transferobjects.Course;
+import transferobjects.Student;
 import transferobjects.Tuition;
 
 /**
@@ -24,9 +25,9 @@ import transferobjects.Tuition;
 public class TuitionDAOImpl implements TuitionDAO{
     private static final String GET_ALL_TUITIONS = "SELECT student_num, paid, remainder FROM Registrar.Tuition ORDER BY student_num;";
     private static final String INSERT_TUITIONS = "INSERT INTO Registrar.Tuition (student_num, paid, remainder) VALUES(?, ?, ?)";
-    private static final String DELETE_COURSES = "DELETE FROM Courses WHERE course_num = ?";
-    private static final String UPDATE_PAID = "UPDATE Registrar.Tuition SET paid = ? WHERE student_num = ?;";
-    private static final String GET_BY_CODE_COURSES = "SELECT course_num, name FROM Courses WHERE name = ?";
+    private static final String DELETE_TUITION = "DELETE FROM Registrar.Tuition WHERE student_num = ?";
+    private static final String UPDATE_PAID = "UPDATE Registrar.Tuition SET paid = ?, remainder= ? WHERE student_num = ?";
+    private static final String GET_BY_ID_TUITIONS = "SELECT student_num, paid, remainder FROM Registrar.Tuition WHERE student_num = ?";
 
     @Override
     public List<Tuition> getAllTuitions() {
@@ -99,7 +100,7 @@ public class TuitionDAOImpl implements TuitionDAO{
  * @param firstName 
  */
     @Override
-    public void updateTuition(Integer studentnumber, double paid) {
+    public void updateTuition(Integer studentnumber, double paid, double remainder) {
        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -108,7 +109,8 @@ public class TuitionDAOImpl implements TuitionDAO{
             con = ds.createConnection();    
             pstmt = con.prepareStatement(UPDATE_PAID);
             pstmt.setDouble(1,paid);
-            pstmt.setInt(2,studentnumber);
+            pstmt.setDouble(2,remainder);
+            pstmt.setInt(3,studentnumber);
             
             pstmt.executeUpdate();
             
@@ -138,6 +140,100 @@ public class TuitionDAOImpl implements TuitionDAO{
             }
         }   
     }
+
+    @Override
+    public Tuition getTuitionByStudentNumber(Integer studentnumber) {
+        Tuition tuition = null;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try{
+            DataSource ds = new DataSource();
+            con = ds.createConnection();
+            
+            pstmt = con.prepareStatement(GET_BY_ID_TUITIONS);
+            pstmt.setInt(1,studentnumber);
+            rs = pstmt.executeQuery();
+            
+            tuition = new Tuition();
+            rs.next();
+            tuition.setStudentNum(rs.getInt("student_num"));
+            tuition.setPaid(rs.getDouble("paid"));
+            tuition.setRemainder(rs.getDouble("remainder"));
+                
+          
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return tuition;
+        
+    }
+    
+    @Override
+    public void deleteTuition(Integer studentNumber) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        PreparedStatement pstmt1 = null;
+        ResultSet rs = null;
+        try{
+            DataSource ds = new DataSource();
+            con = ds.createConnection();    
+            pstmt = con.prepareStatement(DELETE_TUITION);
+            pstmt.setInt(1,studentNumber);
+            
+            pstmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+            try {
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        
+        
+    }
+ 
 
 
     

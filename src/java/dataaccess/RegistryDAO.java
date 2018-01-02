@@ -7,6 +7,7 @@ package dataaccess;
 
 import java.util.List;
 import transferobjects.Course;
+import transferobjects.Registry;
 import transferobjects.Student;
 import transferobjects.Tuition;
 
@@ -15,10 +16,11 @@ import transferobjects.Tuition;
  * @author fatema
  */
 public interface RegistryDAO {
-    List<Tuition> getAllStudents();
-    void addStudent(Student student);
-    Student getStudentByStudentNumber(Integer studentnumber);
+    List<Registry> getAllStudents();
+    void addRegisterStudent(int student_num, String course_num, String term, int year);
+    Registry getStudentByStudentNumber(Integer studentnumber);
     void updateStudent(Integer studentNumber,Course courseNumber);
-    void deleteStudent(Integer studentNumber);
+    void deleteStudent(Integer studentNumber, String course);
+    void deleteRegisteredStudent(Integer studentNumber);
     
 }

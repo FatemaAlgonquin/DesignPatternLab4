@@ -24,6 +24,7 @@ public class TuitionLogic {
     private static final int COURSE_NAME_MAX_LENGTH = 45;
 
     private TuitionDAO tuitionDAO = null;
+    
 
     public TuitionLogic() {
         tuitionDAO = new TuitionDAOImpl();
@@ -38,8 +39,20 @@ public class TuitionLogic {
     }
      
      public void updateTuitionLogic(int studentNumber, double paid) throws javax.xml.bind.ValidationException {
-        tuitionDAO.updateTuition(studentNumber,paid);
+         Tuition tuition = tuitionDAO.getTuitionByStudentNumber(studentNumber);
+         double updatedPaid = tuition.getPaid() + paid;
+         double updatedRemainder = tuition.getRemainder() - paid;
+         
+         tuitionDAO.updateTuition(studentNumber, updatedPaid, updatedRemainder);
+         
+        //tuitionDAO.updateTuition(studentNumber,paid);
     }
+     
+     void deleteStudentTuition(Integer studentNumber){
+         tuitionDAO.deleteTuition(studentNumber);
+     }
+     
+    
 
     /**
      * 

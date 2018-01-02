@@ -36,9 +36,10 @@ public class Registry {
         this.studentNumner = studentNumner;
     }
     
-    public String courseNumber(){
+    public String getCourseNumber(){
         return courseNumber;
     }
+    
     
     public void setCourseNumber(String courseNumber){
         this.courseNumber = courseNumber;

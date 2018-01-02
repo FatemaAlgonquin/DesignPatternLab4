@@ -8,7 +8,6 @@
         <servlet-name>CoursesView</servlet-name>
         <url-pattern>/Courses</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>StudentsView</servlet-name>
         <servlet-class>view.StudentsView</servlet-class>
@@ -17,16 +16,24 @@
         <servlet-name>StudentsView</servlet-name>
         <url-pattern>/students/*</url-pattern>
     </servlet-mapping>
- 
-    <!--<servlet>
-        <servlet-name>StudentView</servlet-name>
-        <servlet-class>view.StudentView</servlet-class>
+    <servlet>
+        <servlet-name>TuitionView</servlet-name>
+        <servlet-class>view.TuitionView</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>StudentView</servlet-name>
-        <url-pattern>/Student/*</url-pattern>
-    </servlet-mapping>-->
-     <servlet>
+        <servlet-name>TuitionView</servlet-name>
+        <url-pattern>/tuitions</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UITuitionView</servlet-name>
+        <servlet-class>view.UITuitionView</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UITuitionView</servlet-name>
+        <url-pattern>/uituitionview/update_form</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>UIStudentView</servlet-name>
         <servlet-class>view.UIStudentView</servlet-class>
     </servlet>
@@ -35,7 +42,26 @@
         <url-pattern>/uistudentview/*</url-pattern>
     </servlet-mapping>
     
-   
+    <servlet>
+        <servlet-name>RegistryView</servlet-name>
+        <servlet-class>view.RegistryView</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistryView</servlet-name>
+        <url-pattern>/registryview/*</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>ClassRepView</servlet-name>
+        <servlet-class>view.ClassRepView</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClassRepView</servlet-name>
+        <url-pattern>/classrepview/*</url-pattern>
+    </servlet-mapping>
+    
+    
+    
     <resource-ref>
         <description>DB Connection</description>
         <res-ref-name>jdbc/Registrar</res-ref-name>

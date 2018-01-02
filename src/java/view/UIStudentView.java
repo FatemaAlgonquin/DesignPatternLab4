@@ -5,6 +5,7 @@
  */
 package view;
 
+import business.CoursesLogic;
 import business.StudentsLogic;
 import dataaccess.StudentDAOImpl;
 import java.io.File;
@@ -16,6 +17,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import transferobjects.Course;
+import transferobjects.Registry;
 import transferobjects.Student;
 
 /**
@@ -46,20 +49,33 @@ public class UIStudentView extends HttpServlet{
 	       }
         }
     }
-    
-   
-    
-    
+      
     protected void generateSearchForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
          try (PrintWriter out = response.getWriter()) {
              ClassLoader classLoader = getClass().getClassLoader();
              File file = new File(classLoader.getResource("html/student_search_by_id_form.html").getFile());
             
+             StudentsLogic student = new StudentsLogic();
+             
+             List<Student> allstudents = student.getAllStudents();
+             StringBuilder studentNumber = new StringBuilder();
+             
+           // population the courses from the course table in html form
+             for(Student s : allstudents){
+                studentNumber.append("<option value=\"").append(s.getStudentNum()).append("\">").append(s.getStudentNum()).append("</option>");
+                studentNumber.append(System.getProperty("line.separator")); 
+                // <option value="CST8300">Achieving Success in Changing Environments</option>
+            }
+            
             try (Scanner scanner = new Scanner(file)) {
 
 		while (scanner.hasNextLine()) {
-			String line = scanner.nextLine();		
+			String line = scanner.nextLine();
+                        if(line.contains("__STUDENT_TEMPLATE__")){
+                            //instead of __COURSE_TEMPLATE__ add the course options that populated from course table
+                            line = studentNumber.toString();
+                    }
                         out.println(line + "\n");
 		}
 		scanner.close();
@@ -101,11 +117,29 @@ public class UIStudentView extends HttpServlet{
          try (PrintWriter out = response.getWriter()) {
              ClassLoader classLoader = getClass().getClassLoader();
              File file = new File(classLoader.getResource("html/student_delete_by_id_form.html").getFile());
+             
+             
+             
+            StudentsLogic student = new StudentsLogic();
+            List<Student> students = student.getAllStudents();
+            StringBuilder studentNumber = new StringBuilder();
+            
+           // population the courses from the course table in html form
+            for(Student s : students){
+                studentNumber.append("<option value=\"").append(s.getStudentNum()).append("\">").append(s.getStudentNum()).append("</option>");
+                studentNumber.append(System.getProperty("line.separator")); 
+                // <option value="CST8300">Achieving Success in Changing Environments</option>
+            }
             
             try (Scanner scanner = new Scanner(file)) {
 
 		while (scanner.hasNextLine()) {
-			String line = scanner.nextLine();		
+			String line = scanner.nextLine();
+                        
+                        if(line.contains("__STUDENT_TEMPLATE__")){
+                            //instead of __COURSE_TEMPLATE__ add the course options that populated from course table
+                            line = studentNumber.toString();
+                        }
                         out.println(line + "\n");
 		}
 		scanner.close();
@@ -142,9 +176,7 @@ public class UIStudentView extends HttpServlet{
         }
         if(pathInfo.equals("/delete_form") ){
                 generateDeleteForm(request, response);
-        }
-        
-        
+        }     
     }
 
   
